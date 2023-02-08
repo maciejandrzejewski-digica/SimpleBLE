@@ -17,10 +17,10 @@ enum Level : int {
     ERROR,
     WARN,
     INFO,
-#pragma push_macro("DEBUG")
+//#pragma push_macro("DEBUG")
 #undef DEBUG
     DEBUG,
-#pragma pop_macro("DEBUG")
+//#pragma pop_macro("DEBUG")
     VERBOSE,
 };
 
