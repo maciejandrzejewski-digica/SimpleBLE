@@ -1,6 +1,7 @@
 #include <simpledbus/base/Holder.h>
 #include <iomanip>
 #include <sstream>
+#include <iostream>
 
 #include "dbus/dbus-protocol.h"
 
@@ -124,6 +125,7 @@ std::vector<std::string> Holder::_represent_container() {
             if (holder_array.size() > 0 && holder_array[0]._type == BYTE) {
                 // Dealing with an array of bytes, use custom print functionality.
                 std::string temp_line = "";
+                auto flags = std::cout.flags();
                 for (int i = 0; i < holder_array.size(); i++) {
                     // Represent each byte as a hex string
                     std::stringstream stream;
@@ -134,6 +136,7 @@ std::vector<std::string> Holder::_represent_container() {
                         temp_line = "";
                     }
                 }
+                std::cout.flags( flags );
                 additional_lines.push_back(temp_line);
             } else {
                 for (int i = 0; i < holder_array.size(); i++) {
